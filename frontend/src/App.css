@@ -8,3 +8,105 @@
   /* margin: 0 auto; */
   /* padding: 0; */
 /* } */
+
+.app-header {
+  background-color: var(--brand-eerie-black); /* Eerie Black for header */
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--brand-imperial-red); /* Imperial Red accent */
+}
+
+.app-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.app-nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.app-nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--brand-white); /* White text on Eerie Black */
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.app-logo-icon {
+  height: 40px; /* Adjust size as needed */
+  width: 40px; /* Adjust size as needed */
+  margin-right: 0.5rem;
+  border-radius: 8px; /* Rounded edges for the icon */
+}
+
+.app-logo-text {
+  color: var(--brand-white); /* Ensure logo text is white */
+}
+
+.app-nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.app-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center; /* Align items vertically */
+}
+
+.app-nav ul li {
+  margin-left: 1.5rem; /* Spacing between nav items */
+}
+
+.app-nav ul li a,
+.app-nav ul li button {
+  color: var(--brand-white); /* White text for nav links */
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius); /* Consistent border-radius */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.app-nav ul li a:hover,
+.app-nav ul li button:hover,
+.app-nav ul li a.active {
+  background-color: var(--brand-imperial-red); /* Imperial Red for active/hover */
+  color: var(--brand-white); /* White text on Imperial Red */
+}
+
+.app-nav ul li button {
+  /* Ensure logout button also follows this pattern or has specific styling if needed */
+}
+
+/* Background pattern using brand colors */
+.background-pattern {
+  background-color: var(--brand-lavender-web); /* Base background color */
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 23, 48, 0.1) 0, /* Lighter Imperial Red for pattern lines */
+    rgba(255, 23, 48, 0.1) 1px,
+    transparent 1px,
+    transparent 10px /* Adjust spacing of lines */
+  );
+  /* Consider adding to a specific container or body if desired globally */
+}
+
+/* Apply the pattern to the body or a specific container */
+body {
+  /* If you want the pattern on the entire body, uncomment and adjust index.css */
+  /* background-color: var(--brand-lavender-web); */
+  /* background-image: repeating-linear-gradient(...); */
+}

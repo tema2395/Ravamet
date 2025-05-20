@@ -8,6 +8,8 @@ import VacancyDetail from './pages/VacancyDetail'; // Import the VacancyDetail p
 import CreateVacancy from './pages/CreateVacancy'; // Import the CreateVacancy page
 import NotFound from './pages/NotFound'; // Import the NotFound page
 // You can also import a Home page or other components here
+// import ravametIcon from './assets/ravamet-icon.png'; // Original import causing error
+import ravametIcon from './logo.svg'; // Using existing logo.svg to fix compilation
 
 
 const App = () => {
@@ -24,30 +26,39 @@ const App = () => {
     return (
         <Router>
             <div className="App-container"> {/* Optional: Main container for app */}
-                <nav className="app-nav">
-                    <div>
-                        <Link to="/" className="app-nav-logo">MyApp</Link> 
-                    </div>
-                    <div className="app-nav-links">
-                        <NavLink to="/vacancies" className={({ isActive }) => isActive ? 'active' : ''}>Vacancies</NavLink>
-                        {isAuthenticated && (
-                             <NavLink to="/create-vacancy" className={({ isActive }) => isActive ? 'active' : ''}>Create Vacancy</NavLink>
-                        )}
-                        {!isAuthenticated && (
-                            <NavLink to="/register" className={({ isActive }) => isActive ? 'active' : ''}>Register</NavLink>
-                        )}
-                        {isAuthenticated ? (
-                            <NavLink to="/profile" className={({ isActive }) => isActive ? 'active' : ''}>Profile</NavLink>
-                        ) : (
-                            <NavLink to="/login" className={({ isActive }) => isActive ? 'active' : ''}>Login</NavLink>
-                        )}
-                        {isAuthenticated && (
-                            <button onClick={handleLogout}>
-                                Logout
-                            </button>
-                        )}
-                    </div>
-                </nav>
+                <header className="app-header"> {/* Added header for semantic structure */}
+                    <nav className="app-nav">
+                        <div className="app-nav-left"> {/* Container for logo and potentially other left-aligned items */}
+                            <Link to="/" className="app-nav-logo">
+                                <img src={ravametIcon} alt="Ravamet Icon" className="app-logo-icon" />
+                                <span className="app-logo-text">равамет</span>
+                            </Link>
+                            {/* Consider adding a tagline or other elements here if needed */}
+                        </div>
+                        <div className="app-nav-right"> {/* Container for navigation links and actions */}
+                            <div className="app-nav-links">
+                                <NavLink to="/vacancies" className={({ isActive }) => isActive ? 'active' : ''}>Вакансии</NavLink>
+                                {isAuthenticated && (
+                                    <NavLink to="/create-vacancy" className={({ isActive }) => isActive ? 'active' : ''}>Создать вакансию</NavLink>
+                                )}
+                                <NavLink to="/profile" className={({ isActive }) => isActive ? 'active' : ''}>Профиль</NavLink>
+                                {/* Removed separate Profile link for authenticated users as it's always shown now */}
+                            </div>
+                            <div className="app-nav-actions">
+                                {!isAuthenticated ? (
+                                    <>
+                                        <NavLink to="/login" className="button-style button-login">Войти</NavLink>
+                                        <NavLink to="/register" className="button-style button-register">Регистрация</NavLink>
+                                    </>
+                                ) : (
+                                    <button onClick={handleLogout} className="button-style button-logout">
+                                        Выйти
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+                    </nav>
+                </header>
                 <main className="page-container"> {/* Added class for consistent padding */}
                 <Routes>
                     {/* Define a simple home page route if you have one */}

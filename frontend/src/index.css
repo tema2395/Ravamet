@@ -1,18 +1,53 @@
 :root {
-  --corporate-red: #c00000;
-  --corporate-red-dark: #a00000; /* For hover states */
-  --corporate-red-light: #e01e1e; /* For focus or active states if needed */
-  --text-light: #ffffff;
-  --text-dark: #333333;
-  --background-light: #f4f4f8; /* Light gray background for the body */
-  --background-card: #ffffff;
-  --border-color: #cccccc;
-  --error-red: #d9534f;
-  --success-green: #5cb85c;
-  --font-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --box-shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.15);
-  --border-radius: 4px;
+  /* Ravamet Brand Colors */
+  --brand-imperial-red: #FF1730;
+  --brand-imperial-red-dark: #D61328; /* Darker shade for hovers */
+  --brand-imperial-red-light: #FF4D62; /* Lighter shade */
+  --brand-imperial-red-shadow: rgba(255, 23, 48, 0.25); /* For focus rings */
+  --brand-imperial-red-shadow-light: rgba(255, 23, 48, 0.1); /* For light backgrounds/hovers */
+
+  --brand-white: #FFFFFF;
+  --brand-eerie-black: #232323;
+  --brand-eerie-black-light: #555555; /* For muted text */
+  --brand-lavender-web: #DFDBE3; /* Available for accents if needed */
+
+  /* Semantic Color Mapping */
+  --primary-color: var(--brand-imperial-red);
+  --primary-color-dark: var(--brand-imperial-red-dark);
+  --primary-color-light: var(--brand-imperial-red-light);
+
+  --action-color: var(--brand-imperial-red);
+  --action-color-dark: var(--brand-imperial-red-dark);
+  --text-on-action: var(--brand-white);
+
+  /* Keeping green for success/secondary as no brand alternative provided */
+  --secondary-action-green: #28a745;
+  --secondary-action-green-dark: #1e7e34;
+
+  --text-light: var(--brand-white);
+  --text-dark: var(--brand-eerie-black);
+  --text-muted: var(--brand-eerie-black-light);
+
+  --background-body: var(--brand-lavender-web); /* Changed from white to lavender */
+  --background-card: var(--brand-white); /* Ensure cards are white for contrast */
+  --background-nav: var(--brand-eerie-black); /* Aligned with App.css header background */
+
+  --border-color: #E0E0E0; /* Neutral light gray for borders */
+  --border-radius: 0.3rem;
+  --border-radius-lg: 0.5rem;
+
+  --error-red: var(--brand-imperial-red); /* Using brand red for errors */
+  --success-green: var(--secondary-action-green);
+
+  --font-sans-serif: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --box-shadow-lg: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --box-shadow-hover: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+
+  /* Corporate colors for component compatibility (e.g., Profile.js) */
+  --corporate-red: var(--brand-imperial-red);
+  --corporate-red-dark: var(--brand-imperial-red-dark);
+  --corporate-red-light: var(--brand-imperial-red-light);
 }
 
 body {
@@ -20,7 +55,7 @@ body {
   font-family: var(--font-sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--background-light);
+  background-color: var(--background-body);
   color: var(--text-dark);
   line-height: 1.6;
 }
@@ -32,13 +67,13 @@ code {
 
 /* Global Link Styles */
 a {
-  color: var(--corporate-red);
+  color: var(--primary-color);
   text-decoration: none;
-  transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
 }
 
 a:hover, a:focus {
-  color: var(--corporate-red-dark);
+  color: var(--primary-color-dark);
   text-decoration: underline;
 }
 
@@ -46,34 +81,51 @@ a:hover, a:focus {
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-dark);
   margin-top: 1.5em;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.75em; /* Adjusted margin */
+  font-weight: 600; /* Slightly bolder headings */
 }
 
-h1 { font-size: 2.2em; }
-h2 { font-size: 1.8em; }
-h3 { font-size: 1.5em; }
+h1 { font-size: 2.2em; } /* Example: 2.5rem on target site */
+h2 { font-size: 1.8em; } /* Example: 2rem on target site */
+h3 { font-size: 1.5em; } /* Example: 1.75rem on target site */
 
 /* Global Button Styles */
-button, .button-style { /* Added .button-style for Link components styled as buttons */
-  background-color: var(--corporate-red);
-  color: var(--text-light);
-  border: none;
-  padding: 10px 18px;
+button, .button-style {
+  background-color: var(--action-color);
+  color: var(--text-on-action);
+  border: 1px solid var(--action-color-dark); /* Adding border */
+  padding: 12px 24px; /* Increased padding */
   font-size: 1rem;
+  font-weight: bold; /* Bolder text */
+  text-transform: uppercase; /* Uppercase text */
   border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   text-align: center;
-  display: inline-block; /* For Link components */
-  text-decoration: none; /* For Link components */
+  display: inline-block;
+  text-decoration: none;
 }
 
 button:hover, button:focus, .button-style:hover, .button-style:focus {
-  background-color: var(--corporate-red-dark);
-  color: var(--text-light); /* Ensure text color remains light on hover */
+  background-color: var(--action-color-dark);
+  border-color: var(--action-color-dark);
+  color: var(--text-on-action);
   box-shadow: var(--box-shadow-hover);
-  outline: none; /* Remove default focus outline if custom is applied or not needed */
+  outline: none;
 }
+
+/* Example for a secondary button style (e.g., green) */
+.button-secondary {
+  background-color: var(--secondary-action-green);
+  border-color: var(--secondary-action-green-dark);
+  color: var(--text-light);
+}
+.button-secondary:hover, .button-secondary:focus {
+  background-color: var(--secondary-action-green-dark);
+  border-color: var(--secondary-action-green-dark);
+  color: var(--text-light);
+}
+
 
 button:disabled, .button-style:disabled {
   background-color: #ccc;
@@ -90,13 +142,13 @@ input[type="password"],
 input[type="number"],
 textarea,
 select {
-  width: 100%; /* Default to full width, can be overridden by parent */
-  padding: 10px;
+  width: 100%;
+  padding: 12px; /* Increased padding */
   font-size: 1rem;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  box-sizing: border-box; /* Important for width calculation */
-  margin-bottom: 10px; /* Default spacing, can be adjusted in forms */
+  box-sizing: border-box;
+  margin-bottom: 15px; /* Increased margin */
   transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
@@ -106,8 +158,8 @@ input[type="password"]:focus,
 input[type="number"]:focus,
 textarea:focus,
 select:focus {
-  border-color: var(--corporate-red);
-  box-shadow: 0 0 0 2px rgba(192, 0, 0, 0.2); /* Subtle glow effect */
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem var(--brand-imperial-red-shadow); /* Updated shadow to brand color */
   outline: none;
 }
 
@@ -121,7 +173,7 @@ label {
 /* Utility Classes for Messages */
 .message-success {
   color: var(--success-green);
-  background-color: #e9f7e9;
+  background-color: #e9f7e9; /* Consider a lighter shade of success-green if available */
   border: 1px solid var(--success-green);
   padding: 10px;
   border-radius: var(--border-radius);
@@ -130,8 +182,8 @@ label {
 }
 
 .message-error {
-  color: var(--error-red);
-  background-color: #fdecea;
+  color: var(--brand-white); /* Text on error background */
+  background-color: var(--error-red); /* Using brand red */
   border: 1px solid var(--error-red);
   padding: 10px;
   border-radius: var(--border-radius);
@@ -141,99 +193,143 @@ label {
 
 /* Container for pages to provide consistent padding */
 .page-container {
-  padding: 20px;
-  max-width: 1200px; /* Optional: constrain max width for very large screens */
-  margin: 0 auto; /* Center content */
+  padding: 25px; /* Increased padding */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Card styles for vacancy items etc. */
 .card {
   background-color: var(--background-card);
-  padding: 20px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  margin-bottom: 20px; /* Space between cards */
-  transition: box-shadow 0.2s ease-in-out;
+  padding: 25px; /* Increased padding */
+  border-radius: var(--border-radius-lg); /* Larger radius */
+  box-shadow: var(--box-shadow-lg); /* More pronounced shadow */
+  margin-bottom: 25px; /* Increased space */
+  border: 1px solid var(--border-color);
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .card:hover {
-  box-shadow: var(--box-shadow-hover);
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.18); /* Enhanced hover shadow */
 }
 
 .card-title {
-  color: var(--corporate-red);
-  font-size: 1.5em;
+  color: var(--text-dark);
+  font-size: 1.6em;
+  font-weight: 600;
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .card-content p {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: var(--text-dark);
+  line-height: 1.7;
 }
 
 .card-content strong {
  color: var(--text-dark);
+ font-weight: 600;
 }
 
 /* Specific to App.js nav bar (can be moved to App.css if preferred) */
 .app-nav {
-  background-color: #333;
-  padding: 12px 25px;
+  background-color: var(--background-nav);
+  padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .app-nav-logo {
-  color: var(--corporate-red);
+  color: var(--text-dark);
   font-size: 1.8em;
   font-weight: bold;
   text-decoration: none;
 }
 .app-nav-logo:hover {
-  color: var(--corporate-red-light);
+  color: var(--primary-color); /* Interactive color on hover */
 }
 
 .app-nav-links a, .app-nav-links button {
-  color: var(--text-light);
-  margin: 0 12px;
+  color: var(--text-dark);
+  margin: 0 0.75rem;
   text-decoration: none;
   font-size: 1rem;
-  padding: 8px 12px;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
   border-radius: var(--border-radius);
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .app-nav-links a:hover, .app-nav-links button:hover,
 .app-nav-links a:focus, .app-nav-links button:focus {
-  background-color: var(--corporate-red);
-  color: var(--text-light); /* Ensure text remains light */
+  background-color: var(--brand-imperial-red-shadow-light); /* Light red background on hover */
+  color: var(--primary-color-dark);
   text-decoration: none;
 }
 
-.app-nav-links button { /* Specific for logout button */
+.app-nav-links button {
   background: none;
   border: none;
   cursor: pointer;
 }
-.app-nav-links button:hover {
-  background-color: var(--corporate-red-dark); /* Darken on hover for buttons in nav */
+/* Special hover for logout button if needed, or keep consistent with other nav links */
+.app-nav-links button.button-logout:hover,
+.app-nav-actions button.button-logout:hover { /* Target logout button specifically if it has this class */
+  background-color: var(--brand-imperial-red-dark);
+  color: var(--brand-white);
 }
 
 /* Active NavLink (if using NavLink from react-router-dom) */
 .app-nav-links a.active {
-  background-color: var(--corporate-red);
+  background-color: var(--primary-color);
   color: var(--text-light);
   font-weight: bold;
 }
+.app-nav-links a.active:hover {
+  background-color: var(--primary-color-dark);
+  color: var(--text-light);
+}
+
+/* Styling for login/register buttons in nav to match main button style */
+.app-nav-actions .button-login,
+.app-nav-actions .button-register {
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem; /* Slightly smaller padding for nav buttons */
+    font-size: 0.9rem; /* Slightly smaller font */
+}
+/* Logout button in nav actions */
+.app-nav-actions .button-logout {
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    background-color: var(--action-color); /* Ensure it uses brand color */
+    color: var(--text-on-action);
+    border: 1px solid var(--action-color-dark);
+}
+.app-nav-actions .button-logout:hover {
+    background-color: var(--action-color-dark);
+    color: var(--text-on-action);
+}
+
 
 /* Responsive adjustments (basic example) */
 @media (max-width: 768px) {
   .app-nav {
     flex-direction: column;
     align-items: flex-start;
+  }
+  .app-nav-left, .app-nav-right {
+    width: 100%;
+  }
+  .app-nav-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
   }
   .app-nav-links {
     margin-top: 10px;
@@ -243,9 +339,24 @@ label {
   }
   .app-nav-links a, .app-nav-links button {
     margin: 5px 0;
-    width: calc(100% - 24px); /* Full width minus padding */
+    width: calc(100% - 1.5rem); /* Full width minus padding */
     text-align: left;
   }
+  .app-nav-actions {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+  }
+  .app-nav-actions .button-login,
+  .app-nav-actions .button-register,
+  .app-nav-actions .button-logout {
+    width: calc(100% - 1.5rem); /* Full width minus padding */
+    margin-left: 0;
+    margin-bottom: 0.5rem; /* Space between stacked buttons */
+    text-align: center;
+  }
+
   h1 { font-size: 1.8em; }
   h2 { font-size: 1.5em; }
 }

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'; // Assuming this is used for API calls as in other components
 
 const Profile = () => {
     const [userData, setUserData] = useState(null);
@@ -128,7 +128,8 @@ const Profile = () => {
             // For `Optional[str] = None`, FastAPI/Pydantic typically converts empty string to None.
             // For `Optional[str] = ""`, an empty string is valid.
             // Let's assume backend handles empty strings appropriately for optional text fields.
-        }
+            }
+        } // This closes the for...in loop
 
         try {
             await axios.put('/api/users/me', updateData, { // Ensure this is the correct endpoint
