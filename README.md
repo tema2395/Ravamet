@@ -165,6 +165,46 @@ make test
 make lint
 ```
 
+## Frontend
+
+The frontend application is built with React.js and is located in the `frontend/` directory.
+
+### Running Locally (Development)
+
+To run the frontend application locally for development:
+
+1.  **Navigate to the frontend directory:**
+    ```bash
+    cd frontend
+    ```
+2.  **Install dependencies:**
+    If you're using npm:
+    ```bash
+    npm install
+    ```
+    Or, if you're using yarn:
+    ```bash
+    yarn install
+    ```
+3.  **Start the development server:**
+    If you're using npm:
+    ```bash
+    npm start
+    ```
+    Or, if you're using yarn:
+    ```bash
+    yarn start
+    ```
+    This will typically open the application in your default web browser at `http://localhost:3000`. The development server provides hot reloading and other development-friendly features.
+
+### Building and Deploying
+
+For instructions on how to build the frontend for production and various deployment strategies, please refer to the detailed deployment guide:
+
+*   **[Frontend Deployment Guide](./frontend/DEPLOYMENT.md)**
+
+This guide covers building the static assets, serving with static servers (like Nginx or `serve`), and options for integrating with the Python (FastAPI) backend.
+
 ## License
 
 [MIT](LICENSE)
